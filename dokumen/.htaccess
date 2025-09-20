@@ -1,0 +1,11 @@
+# /spektra/dokumen/.htaccess
+
+# 1) Biar Apache forwarding PATH_INFO ke index.php
+AcceptPathInfo On
+
+# 2) Kalau mau lebih canggih (routing semua ke index.php)
+RewriteEngine On
+RewriteBase /spektra/dokumen/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php/$1 [L,QSA]
